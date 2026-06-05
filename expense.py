@@ -1,6 +1,21 @@
 import csv
 from datetime import datetime
 
+#  Add Expense function
+
+def add_expense():
+    amount = input("Enter amount spend: ")
+    category = input("Enter category: ")
+    description = input("Enter description: ")
+    
+    
+    date = datetime.now().strftime("%Y-%m-%d")
+    
+    with open('expenses.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([date, amount, category, description])
+        
+        print("Expense added successfully!")
 # Menu
 
 while True:
@@ -13,7 +28,7 @@ while True:
     choice = input("Choose an option: ")
     
     if choice == '1':
-        print("Add Expense")
+        add_expense()
         
     elif choice == '2':
         print("View Expenses")
@@ -26,5 +41,4 @@ while True:
         break
     else:
         print("Invalid Choice")
-        
         
