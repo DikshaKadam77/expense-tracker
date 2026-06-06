@@ -52,6 +52,32 @@ def total_spending():
         
     except FileNotFoundError:
         print("No expenses found.")
+        
+#  Category summary function
+
+def category_summary():
+    categories = {}
+    
+    try:
+        with open("expenses.csv", "r") as file:
+            reader = csv.reader(file)
+            
+            for row in reader:
+                category = row[2]
+                amount = float(row[1])
+                
+                if category in categories:
+                    categories[category] += amount
+                else:
+                    categories[category] = amount
+                    
+        print("\nCATEGORY SUMMARY:")
+        
+        for category, total in categories.items():
+            print(f"{category}: {total}")
+    
+    except FileNotFoundError:
+        print("No expenses found.")
     
     
 # Menu
@@ -61,7 +87,8 @@ while True:
     print("1. Add Expense")
     print("2. View Expenses")
     print("3. Total Spending")
-    print("4. Exit")
+    print("4. Category Summary")
+    print("5. Exit")
     
     choice = input("Choose an option: ")
     
@@ -75,7 +102,9 @@ while True:
         total_spending()
         
     elif choice == '4':
-        print("Exiting...")
+        category_summary()
+    elif choice == '5':
+        print("GoodBye!")
         break
     else:
         print("Invalid Choice")
