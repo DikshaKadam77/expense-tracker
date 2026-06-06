@@ -1,0 +1,12 @@
+#Expense data
+expenses.csv
+
+# Python cache files
+__pycache__/
+
+# complied python files
+*.pyc
+
+# vs code settings
+
+.vscode/
