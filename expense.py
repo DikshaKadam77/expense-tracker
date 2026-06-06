@@ -79,6 +79,10 @@ def category_summary():
     except FileNotFoundError:
         print("No expenses found.")
     
+#  Exit function
+
+def exit_program():
+    print("Thank you for using the Expense Tracker.")
     
 # Menu
 
@@ -104,7 +108,7 @@ while True:
     elif choice == '4':
         category_summary()
     elif choice == '5':
-        print("GoodBye!")
+        exit_program()
         break
     else:
         print("Invalid Choice")
