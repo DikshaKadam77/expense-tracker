@@ -36,6 +36,23 @@ def view_expenses():
     except FileNotFoundError:
         print("No expenses found.")
         
+# Total spending function
+
+def total_spending():
+    total = 0
+    
+    try:
+        with open("expenses.csv", "r") as file:
+            reader = csv.reader(file)
+            
+            for row in reader:
+                total += float(row[1])
+                
+        print(f"Total Spending: {total}")
+        
+    except FileNotFoundError:
+        print("No expenses found.")
+    
     
 # Menu
 
@@ -55,7 +72,7 @@ while True:
         view_expenses()
         
     elif choice == '3':
-        print("Total Spending")
+        total_spending()
         
     elif choice == '4':
         print("Exiting...")
