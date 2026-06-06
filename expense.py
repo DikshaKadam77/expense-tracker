@@ -16,6 +16,27 @@ def add_expense():
         writer.writerow([date, amount, category, description])
         
         print("Expense added successfully!")
+        
+# View Expenses function
+
+def view_expenses():
+    try:
+        with open('expenses.csv', "r") as file:
+            reader = csv.reader(file)
+            
+            print("\nALL EXPENSES:")
+            
+            for row in reader:
+                print(f"Date: {row[0]}")
+                print(f"Amount: {row[1]}")
+                print(f"Category: {row[2]}")
+                print(f"Description: {row[3]}")
+                print("-" * 30)
+                
+    except FileNotFoundError:
+        print("No expenses found.")
+        
+    
 # Menu
 
 while True:
@@ -31,7 +52,7 @@ while True:
         add_expense()
         
     elif choice == '2':
-        print("View Expenses")
+        view_expenses()
         
     elif choice == '3':
         print("Total Spending")
